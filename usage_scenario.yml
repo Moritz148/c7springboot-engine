@@ -13,6 +13,6 @@ flow:
     container: c7experiment
     commands:
       - type: console
-        command: java -jar demo.jar
+        command: java -jar demoC7demoC7Application.jar
 #        log-stdout: true
 #        log-stderr: true
