@@ -16,7 +16,7 @@
       <bpmn:incoming>Flow_1oqcwy4</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:serviceTask id="task4" name="task4" camunda:type="external" camunda:topic="task-nr-4">
-      <bpmn:incoming>Flow_08id39x</bpmn:incoming>
+      <bpmn:incoming>Flow_0la17hw</bpmn:incoming>
       <bpmn:outgoing>Flow_1gnfjfq</bpmn:outgoing>
     </bpmn:serviceTask>
     <bpmn:serviceTask id="task5" name="task5" camunda:type="external" camunda:topic="task-nr-5">
@@ -60,7 +60,7 @@
     <bpmn:sequenceFlow id="Flow_1bc5kw8" sourceRef="task6" targetRef="task7" />
     <bpmn:sequenceFlow id="Flow_05r509w" sourceRef="task7" targetRef="task8" />
     <bpmn:sequenceFlow id="Flow_17oax1o" sourceRef="task8" targetRef="task9" />
-    <bpmn:sequenceFlow id="Flow_08id39x" name="yes" sourceRef="Gateway_0mvcarn" targetRef="task4">
+    <bpmn:sequenceFlow id="Flow_08id39x" name="yes" sourceRef="Gateway_0mvcarn" targetRef="Event_06cuula">
       <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${true}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="Flow_1k740i6" sourceRef="task9" targetRef="task10" />
@@ -72,6 +72,14 @@
       <bpmn:incoming>Flow_1ios8vt</bpmn:incoming>
       <bpmn:outgoing>Flow_0qqeisa</bpmn:outgoing>
     </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="Flow_0la17hw" sourceRef="Event_06cuula" targetRef="task4" />
+    <bpmn:intermediateCatchEvent id="Event_06cuula">
+      <bpmn:incoming>Flow_08id39x</bpmn:incoming>
+      <bpmn:outgoing>Flow_0la17hw</bpmn:outgoing>
+      <bpmn:timerEventDefinition id="TimerEventDefinition_1etvvri">
+        <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">PT1S</bpmn:timeDuration>
+      </bpmn:timerEventDefinition>
+    </bpmn:intermediateCatchEvent>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="typicalC7process">
@@ -133,6 +141,9 @@
       <bpmndi:BPMNShape id="Activity_0nq608c_di" bpmnElement="task3">
         <dc:Bounds x="560" y="100" width="100" height="80" />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0zsgz0b_di" bpmnElement="Event_06cuula">
+        <dc:Bounds x="822" y="122" width="36" height="36" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_162wnsn_di" bpmnElement="Flow_162wnsn">
         <di:waypoint x="188" y="140" />
         <di:waypoint x="240" y="140" />
@@ -171,9 +182,9 @@
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_08id39x_di" bpmnElement="Flow_08id39x">
         <di:waypoint x="775" y="140" />
-        <di:waypoint x="910" y="140" />
+        <di:waypoint x="822" y="140" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="798" y="122" width="17" height="14" />
+          <dc:Bounds x="789" y="122" width="17" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1k740i6_di" bpmnElement="Flow_1k740i6">
@@ -190,6 +201,10 @@
         <bpmndi:BPMNLabel>
           <dc:Bounds x="733" y="203" width="13" height="14" />
         </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0la17hw_di" bpmnElement="Flow_0la17hw">
+        <di:waypoint x="858" y="140" />
+        <di:waypoint x="910" y="140" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
