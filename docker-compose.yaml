@@ -1,0 +1,34 @@
+services:
+  camunda:
+#    image: camunda/camunda-bpm-platform:latest
+#    image: moritz148/camunda7experiment:latest
+    image: moritz148/c7processenginetest:v1
+    container_name: camunda7
+    restart: unless-stopped
+    #    ports:
+    #      - "8080:8080"
+    healthcheck:
+      test: ["CMD", "curl", "-fs", "http://camunda7:8080/engine-rest/engine"]
+      interval: 20s
+      timeout: 5s
+      retries: 5
+    networks:
+      - camunda-platform
+
+  c7experiment:
+    #image: moritz148/cam7exp:latest
+    #image: moritz148/cam7exp:test
+    #image: moritz148/c7experiment:testv2
+#    image: moritz148/c7experiment:newProcess
+    image: moritz148/c7experimentspringboot:v1
+    container_name: c7experiment
+    restart: no
+    depends_on:
+      camunda:
+        condition: service_healthy
+    networks:
+      - camunda-platform
+
+networks:
+  camunda-platform:
+    driver: bridge
