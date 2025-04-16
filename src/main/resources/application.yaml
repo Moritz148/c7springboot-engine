@@ -3,13 +3,4 @@ camunda.bpm.job-execution:
 
 logging:
   level:
-#    org.camunda.bpm.engine: WARN
-#    org.camunda.bpm.spring.boot: WARN
-#    com.experiment.camunda.Application: WARN
-#    org.springframework.boot.web.embedded.tomcat: WARN
-#    org.apache.catalina.core: WARN
-#    org.springframework.jdbc.datasource.embedded: WARN
     root: WARN
-#logging:
-#  level:
-#    org.camunda.bpm.engine: DEBUG
